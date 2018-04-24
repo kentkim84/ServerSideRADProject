@@ -2,9 +2,12 @@ package com.ships.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -26,6 +29,7 @@ public class MainController implements MainControllerInterface {
 	@Autowired
 	private OrderInfoService orderInfoService;
 	
+	// Add*** controllers with Get method
 	@Override
 	@GetMapping("/addShip")
 	public ModelAndView addShipGet(ModelAndView modelAndView) {
@@ -50,27 +54,53 @@ public class MainController implements MainControllerInterface {
 		return modelAndView;
 	}
 	
+	// Add*** controllers with Post method	
 	@Override
 	@PostMapping("/addShip")
-	public ModelAndView addShipPost(Ship ship, ModelAndView modelAndView) {
-
-		return null;
+	public ModelAndView addShipPost(@Valid Ship ship, BindingResult bindingResult, ModelAndView modelAndView) {				
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("addShip");
+			return modelAndView;
+		} else {
+			shipService.saveShip(ship);
+			/*modelAndView.addObject("SuccessMessage", "Ship has been added successfully");
+			modelAndView.addObject("ship", new Ship());
+			modelAndView.setViewName("showAllShipList");*/
+			return new ModelAndView("redirect:/showAllShipList");
+		}			
 	}
 
 	@Override
 	@PostMapping("/addShippingCompany")
-	public ModelAndView addShippingCompanyPost(ShippingCompany shippingCompany, ModelAndView modelAndView) {
-
-		return null;
+	public ModelAndView addShippingCompanyPost(@Valid ShippingCompany shippingCompany, BindingResult bindingResult, ModelAndView modelAndView) {
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("addShippingCompany");
+			return modelAndView;
+		} else {
+			shippingCompanyService.saveShippingCompany(shippingCompany);
+			/*modelAndView.addObject("SuccessMessage", "Shipping Company has been added successfully");
+			modelAndView.addObject("shippingCompany", new ShippingCompany());
+			modelAndView.setViewName("showAllShippingCompanyList");*/
+			return new ModelAndView("redirect:/showAllShippingCompanyList");
+		}
 	}
 
 	@Override
 	@PostMapping("/createOrder")
-	public ModelAndView createOrderInfoPost(OrderInfo orderInfo, ModelAndView modelAndView) {
-
-		return null;
+	public ModelAndView createOrderInfoPost(@Valid OrderInfo orderInfo, BindingResult bindingResult, ModelAndView modelAndView) {
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("createOrder");
+			return modelAndView;
+		} else {
+			orderInfoService.saveOrderInfo(orderInfo);
+			/*modelAndView.addObject("SuccessMessage", "Order Info has been created successfully");
+			modelAndView.addObject("orderInfo", new OrderInfo());
+			modelAndView.setViewName("showAllOrderInfoList");*/
+			return new ModelAndView("redirect:/showAllOrderInfoList");
+		}
 	}
 
+	// Show*** controllers with Get method
 	@Override
 	@GetMapping("/showAllShipList")
 	public ModelAndView getAllShipList(ModelAndView modelAndView) {		

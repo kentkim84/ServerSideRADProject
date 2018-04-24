@@ -14,8 +14,8 @@ public class OrderInfoService {
 	@Autowired
 	private OrderInfoRepository orderInfoRepository;
 	 
-	public void saveShippingCompany(OrderInfo shippingCompany) {
-		orderInfoRepository.save(shippingCompany);
+	public OrderInfo saveOrderInfo(OrderInfo orderInfo) {
+		return orderInfoRepository.save(orderInfo);
 	}
 		
 	public List<OrderInfo> findAll() {			

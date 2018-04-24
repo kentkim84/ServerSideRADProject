@@ -1,7 +1,6 @@
 package com.ships.controllers;
 
-import java.util.List;
-
+import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ships.model.OrderInfo;
@@ -15,9 +14,9 @@ public interface MainControllerInterface {
 	public ModelAndView createOrderInfoGet(ModelAndView modelAndView);
 	
 	// add*** Post methods
-	public ModelAndView addShipPost(Ship ship, ModelAndView modelAndView);
-	public ModelAndView addShippingCompanyPost(ShippingCompany shippingCompany, ModelAndView modelAndView);
-	public ModelAndView createOrderInfoPost(OrderInfo orderInfo, ModelAndView modelAndView);
+	public ModelAndView addShipPost(Ship ship, BindingResult bindingResult, ModelAndView modelAndView);
+	public ModelAndView addShippingCompanyPost(ShippingCompany shippingCompany, BindingResult bindingResult, ModelAndView modelAndView);
+	public ModelAndView createOrderInfoPost(OrderInfo orderInfo, BindingResult bindingResult, ModelAndView modelAndView);
 	
 	// getAll*** methods
 	public ModelAndView getAllShipList(ModelAndView modelAndView);

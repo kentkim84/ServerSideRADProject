@@ -14,8 +14,8 @@ public class ShipService {
 	@Autowired
 	private ShipRepository shipRepository;
 	 
-	public void saveShip(Ship ship) {
-		shipRepository.save(ship);
+	public Ship saveShip(Ship ship) {
+		return shipRepository.save(ship);
 	}
 		
 	public List<Ship> findAll() {			

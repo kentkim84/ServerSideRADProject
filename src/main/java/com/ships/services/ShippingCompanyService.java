@@ -13,8 +13,8 @@ public class ShippingCompanyService {
 	@Autowired
 	private ShippingCompanyRepository shippingCompanyRepository;
 	 
-	public void saveShippingCompany(ShippingCompany shippingCompany) {
-		shippingCompanyRepository.save(shippingCompany);
+	public ShippingCompany saveShippingCompany(ShippingCompany shippingCompany) {
+		return shippingCompanyRepository.save(shippingCompany);
 	}
 		
 	public List<ShippingCompany> findAll() {			
