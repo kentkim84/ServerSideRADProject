@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ships.model.Ship;
 import com.ships.model.ShippingCompany;
@@ -24,65 +27,69 @@ public class MainController implements MainControllerInterface {
 	private OrderInfoService orderInfoService;
 	
 	@Override
-	@RequestMapping(value = "/addShip", method = RequestMethod.GET)
-	public void addShipGet(Ship ship) {
-		
+	@GetMapping("/addShip")
+	public ModelAndView addShipGet(Ship ship, ModelAndView modelAndView) {		
+		modelAndView.setViewName("addShip");
+		return modelAndView;
 	}
 
 	@Override
-	@RequestMapping(value = "/addShippingCompany", method = RequestMethod.GET)
-	public void addShippingCompanyGet(ShippingCompany shippingCompany) {
-		
-		
+	@GetMapping("/addShippingCompany")
+	public ModelAndView addShippingCompanyGet(ShippingCompany shippingCompany, ModelAndView modelAndView) {
+		modelAndView.setViewName("addShippingCompany");
+		return modelAndView;
 	}
 
 	@Override
-	@RequestMapping(value = "/addOrderInfo", method = RequestMethod.GET)
-	public void addOrderInfoGet(OrderInfo orderInfo) {
-
-		
+	@GetMapping("/createOrder")
+	public ModelAndView createOrderInfoGet(OrderInfo orderInfo, ModelAndView modelAndView) {
+		modelAndView.setViewName("createOrder");
+		return modelAndView;
 	}
 	
 	@Override
-	@RequestMapping(value = "/addShip", method = RequestMethod.POST)
-	public void addShipPost(Ship ship) {
-
-		
-	}
-
-	@Override
-	@RequestMapping(value = "/addShippingCompany", method = RequestMethod.POST)
-	public void addShippingCompanyPost(ShippingCompany shippingCompany) {
-
-		
-	}
-
-	@Override
-	@RequestMapping(value = "/addOrderInfo", method = RequestMethod.POST)
-	public void addOrderInfoPost(OrderInfo orderInfo) {
-
-		
-	}
-
-	@Override
-	@RequestMapping(value = "/getAllShip", method = RequestMethod.GET)
-	public List<Ship> getAllShip() {
+	@PostMapping("/addShip")
+	public ModelAndView addShipPost(Ship ship, ModelAndView modelAndView) {
 
 		return null;
 	}
 
 	@Override
-	@RequestMapping(value = "/getAllShippingCompany", method = RequestMethod.GET)
-	public List<ShippingCompany> getAllShippingCompany() {
+	@PostMapping("/addShippingCompany")
+	public ModelAndView addShippingCompanyPost(ShippingCompany shippingCompany, ModelAndView modelAndView) {
 
 		return null;
 	}
 
 	@Override
-	@RequestMapping(value = "/getAllOrderInfo", method = RequestMethod.GET)
-	public List<OrderInfo> getAllOrderInfo() {
+	@PostMapping("/createOrder")
+	public ModelAndView createOrderInfoPost(OrderInfo orderInfo, ModelAndView modelAndView) {
 
 		return null;
+	}
+
+	@Override
+	@GetMapping("/showAllShipList")
+	public ModelAndView getAllShipList(ModelAndView modelAndView) {		
+		modelAndView.addObject("shipList", shipService.findAll());
+		modelAndView.setViewName("showAllShipList");
+		return modelAndView;
+	}
+
+	@Override
+	@GetMapping("/showAllShippingCompanyList")
+	public ModelAndView getAllShippingCompanyList(ModelAndView modelAndView) {
+		modelAndView.addObject("shippingCompanyList", shippingCompanyService.findAll());
+		modelAndView.setViewName("showAllShippingCompanyList");
+		return modelAndView;
+	}
+
+	@Override
+	@GetMapping("/showAllOrderInfoList")
+	public ModelAndView getAllOrderInfoList(ModelAndView modelAndView) {
+		modelAndView.addObject("orderInfoList", orderInfoService.findAll());
+		modelAndView.setViewName("showAllOrderInfoList");
+		return modelAndView;
 	}
 
 	
