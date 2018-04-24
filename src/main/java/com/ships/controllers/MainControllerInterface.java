@@ -10,9 +10,9 @@ import com.ships.model.ShippingCompany;
 
 public interface MainControllerInterface {
 	// add*** Get methods
-	public ModelAndView addShipGet(Ship ship, ModelAndView modelAndView);
-	public ModelAndView addShippingCompanyGet(ShippingCompany shippingCompany, ModelAndView modelAndView);
-	public ModelAndView createOrderInfoGet(OrderInfo orderInfo, ModelAndView modelAndView);
+	public ModelAndView addShipGet(ModelAndView modelAndView);
+	public ModelAndView addShippingCompanyGet(ModelAndView modelAndView);
+	public ModelAndView createOrderInfoGet(ModelAndView modelAndView);
 	
 	// add*** Post methods
 	public ModelAndView addShipPost(Ship ship, ModelAndView modelAndView);

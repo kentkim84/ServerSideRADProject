@@ -28,21 +28,24 @@ public class MainController implements MainControllerInterface {
 	
 	@Override
 	@GetMapping("/addShip")
-	public ModelAndView addShipGet(Ship ship, ModelAndView modelAndView) {		
+	public ModelAndView addShipGet(ModelAndView modelAndView) {
+		modelAndView.addObject("ship", new Ship());
 		modelAndView.setViewName("addShip");
 		return modelAndView;
 	}
 
 	@Override
 	@GetMapping("/addShippingCompany")
-	public ModelAndView addShippingCompanyGet(ShippingCompany shippingCompany, ModelAndView modelAndView) {
+	public ModelAndView addShippingCompanyGet(ModelAndView modelAndView) {
+		modelAndView.addObject("shippingCompany", new ShippingCompany());
 		modelAndView.setViewName("addShippingCompany");
 		return modelAndView;
 	}
 
 	@Override
 	@GetMapping("/createOrder")
-	public ModelAndView createOrderInfoGet(OrderInfo orderInfo, ModelAndView modelAndView) {
+	public ModelAndView createOrderInfoGet(ModelAndView modelAndView) {
+		modelAndView.addObject("orderInfo", new OrderInfo());
 		modelAndView.setViewName("createOrder");
 		return modelAndView;
 	}
