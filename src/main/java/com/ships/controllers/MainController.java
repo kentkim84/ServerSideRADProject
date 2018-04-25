@@ -1,6 +1,5 @@
 package com.ships.controllers;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +83,6 @@ public class MainController implements MainControllerInterface {
 	@Override
 	@PostMapping("/addShip")
 	public ModelAndView addShipPost(@Valid @ModelAttribute("ship") Ship ship, BindingResult bindingResult, ModelAndView modelAndView) {
-
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("addShip");
 			return modelAndView;
@@ -150,5 +148,4 @@ public class MainController implements MainControllerInterface {
 		return modelAndView;
 	}
 
-	
 }
