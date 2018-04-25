@@ -114,27 +114,13 @@ public class MainController implements MainControllerInterface {
 			modelAndView.setViewName("createOrder");
 			return modelAndView;
 		} else {			
-			// If no Ship and/or Shipping Company is/are selected, it'll throw an exception
-			if ( orderInfo.getShip() == null || orderInfo.getShippingCompany() == null) {
-				modelAndView.addObject("errorMessage", new String("No Ship and/or Shipping Company selected"));
+			try {
+				orderInfoService.saveOrderInfo(orderInfo);
+			} catch (Exception e) {
+				modelAndView.addObject("errorMessage", e.getMessage());
 				modelAndView.setViewName("createOrderError");
 				return modelAndView;
-			}
-			
-			BigDecimal shipCost = orderInfo.getShip().getCost();
-			BigDecimal shippingCompanyBalance = orderInfo.getShippingCompany().getBalance();
-						
-			// If Ship cost is greater than Shipping company balance, it'll throw an exception
-			if (shipCost.compareTo(shippingCompanyBalance) == 1) {					
-				modelAndView.addObject("errorMessage", new String("Shipping company balance is less than cost of ship - Cannot place order"));
-				modelAndView.setViewName("createOrderError");
-				return modelAndView;
-			}
-			
-			
-			
-						
-			orderInfoService.saveOrderInfo(orderInfo);
+			}			
 			return new ModelAndView("redirect:/showAllOrderInfoList");	
 		}
 	}
