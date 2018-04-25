@@ -130,6 +130,9 @@ public class MainController implements MainControllerInterface {
 				modelAndView.setViewName("createOrderError");
 				return modelAndView;
 			}
+			
+			
+			
 						
 			orderInfoService.saveOrderInfo(orderInfo);
 			return new ModelAndView("redirect:/showAllOrderInfoList");	

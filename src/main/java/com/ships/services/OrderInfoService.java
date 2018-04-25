@@ -1,6 +1,7 @@
 package com.ships.services;
 
-import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,11 @@ public class OrderInfoService {
 	@Autowired
 	private OrderInfoRepository orderInfoRepository;
 	 
-	public OrderInfo saveOrderInfo(OrderInfo orderInfo) {				
+	public OrderInfo saveOrderInfo(OrderInfo orderInfo) {
+		// Set the current time
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		orderInfo.setDate(df.format(cal.getTime()));		
 		return orderInfoRepository.save(orderInfo);
 	}
 		
