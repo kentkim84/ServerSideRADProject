@@ -45,12 +45,9 @@ $ git clone https://github.com/kentkim84/ServerSideRADProject.git
 Click [Clone or Download](https://github.com/kentkim84/ServerSideRADProject), then Click 'Download ZIP'
 
 ### Test
-Run mysql 
-Open the project with a suitable IDE
-```
-$ Visual Studion project folder/VisualTranslator
-$ run VisualTranslator.sln file
-```
+MySql must be running.
+Open the project with a suitable IDE.
+Run the application as Spring Boot App.
 
 ## Authors
 * **Yongjin Kim** - *Initial work* - [Kentkim84](https://github.com/kentkim84)
