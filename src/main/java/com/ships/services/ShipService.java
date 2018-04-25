@@ -18,7 +18,11 @@ public class ShipService {
 		return shipRepository.save(ship);
 	}
 		
-	public List<Ship> findAll() {			
+	public List<Ship> findAll() {
 		return (List<Ship>) shipRepository.findAll();
 	};
+	
+	public List<Ship> findByShippingCompanyIsNull() {
+		return (List<Ship>) shipRepository.findByShippingCompanyIsNull();
+	}
 }

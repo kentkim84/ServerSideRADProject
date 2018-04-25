@@ -18,7 +18,7 @@
 		<h1>New Order</h1>
 		<form:form modelAttribute="orderInfo">
 			<label>Ship Name: 
-				<form:select path="ship" items="${shipList}"/>
+				<form:select path="ship" items="${shipList}" />
 			</label><br>
 			<label>Shipping Company: 
 				<form:select path="shippingCompany" items="${shippingCompanyList}" />

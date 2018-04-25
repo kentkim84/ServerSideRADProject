@@ -10,6 +10,7 @@ import com.ships.repositories.ShippingCompanyRepository;
 
 @Service
 public class ShippingCompanyService {
+	
 	@Autowired
 	private ShippingCompanyRepository shippingCompanyRepository;
 	 
